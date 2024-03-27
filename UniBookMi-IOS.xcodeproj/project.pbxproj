@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1629B1962BB4559E007ADF0E /* ProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 1629B1952BB4559E007ADF0E /* ProgressHUD */; };
 		16A64F3B2BADD10800B659C3 /* UniBookMi_IOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A64F3A2BADD10800B659C3 /* UniBookMi_IOSApp.swift */; };
 		16A64F3D2BADD10800B659C3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A64F3C2BADD10800B659C3 /* ContentView.swift */; };
 		16A64F3F2BADD10B00B659C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16A64F3E2BADD10B00B659C3 /* Assets.xcassets */; };
@@ -26,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1629B1962BB4559E007ADF0E /* ProgressHUD in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +85,9 @@
 			dependencies = (
 			);
 			name = "UniBookMi-IOS";
+			packageProductDependencies = (
+				1629B1952BB4559E007ADF0E /* ProgressHUD */,
+			);
 			productName = "UniBookMi-IOS";
 			productReference = 16A64F372BADD10800B659C3 /* UniBookMi-IOS.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +116,10 @@
 				Base,
 			);
 			mainGroup = 16A64F2E2BADD10800B659C3;
+			packageReferences = (
+				1629B1942BB4559E007ADF0E /* XCRemoteSwiftPackageReference "ProgressHUD" */,
+				1629B1972BB455B2007ADF0E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 16A64F382BADD10800B659C3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -342,6 +351,33 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1629B1942BB4559E007ADF0E /* XCRemoteSwiftPackageReference "ProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/relatedcode/ProgressHUD.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 14.1.1;
+			};
+		};
+		1629B1972BB455B2007ADF0E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.23.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1629B1952BB4559E007ADF0E /* ProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1629B1942BB4559E007ADF0E /* XCRemoteSwiftPackageReference "ProgressHUD" */;
+			productName = ProgressHUD;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 16A64F2F2BADD10800B659C3 /* Project object */;
 }
