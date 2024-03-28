@@ -1,5 +1,5 @@
 //
-//  ViewConfigs.swift
+//  UniBookMiColors.swift
 //  UniBookMi-IOS
 //
 //  Created by giulia.floris on 28/03/24.
@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 
 // MARK: colors palette
-
 final class UniBookMiColors{
     static let shared = UniBookMiColors()
 
@@ -28,8 +27,6 @@ final class UniBookMiColors{
     internal func debugBackgroundColor() -> LinearGradient{
         LinearGradient(colors: [.red, .orange, .pink], startPoint: .topLeading, endPoint: .bottomTrailing)
     }
-
-
 }
 
 extension Color {
@@ -47,19 +44,4 @@ extension Color {
     }
 }
 
-// MARK: font
-final class UniBookMiFont{
-    static let shared = UniBookMiFont()
 
-    internal func nunitoSmall() -> Font{
-        Font.custom("Nunito-VariableFont_wght", size: 10)
-    }
-    internal func nunitMedium() -> Font{
-        Font.custom("Nunito-VariableFont_wght", size: 20)
-    }
-    internal func nunitoBig() -> Font{
-        Font.custom("Nunito-VariableFont_wght", size: 30)
-    }
-
-
-}

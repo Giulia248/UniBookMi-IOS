@@ -17,7 +17,7 @@ struct UniBookMiButton: View {
         Button {
             action()
         } label: {
-            Text("Sign In")
+            Text(text)
                 .font(UniBookMiFont.shared.nunitMedium())
                 .bold()
                 .foregroundColor(.white)
