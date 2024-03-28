@@ -28,19 +28,10 @@ struct ContentView: View {
             .navigationDestination(for: NavigationItem.self) { item in
                 switch item.menu {
                 case .login:
-                    SecondContentView()
+                    LoginView()
                 }
             }
         }
-    }
-}
-
-
-struct SecondContentView: View {
-    var body: some View {
-        Text("Hello, SwiftUI!")
-            .font(.title)
-            .foregroundColor(.blue)
     }
 }
 
