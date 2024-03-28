@@ -10,9 +10,7 @@ import Foundation
 final class LoginViewModel: ObservableObject {
 
     internal func isLoginEnabled(email: String, password: String) -> Bool{
-
-        let firstLevelDomani = (email.contains(".com") || email.contains(".it"))
-        return !((!(email.isEmpty) && !(password.isEmpty) && email.contains("@") && firstLevelDomani))
+        return !(email.isEmpty) && !(password.isEmpty) && email.contains("@") && email.contains(".unimi.it")
     }
 
 }

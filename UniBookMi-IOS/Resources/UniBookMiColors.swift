@@ -21,7 +21,7 @@ final class UniBookMiColors{
     let lightBlue1 = Color(hex: "#bfcfff")
 
     internal func backgroundColor() -> LinearGradient{
-        LinearGradient(colors: [.white, .white, UniBookMiColors.shared.lightBlue1], startPoint: .topLeading, endPoint: .bottomTrailing)
+        LinearGradient(colors: [.white, UniBookMiColors.shared.lightBlue1], startPoint: .topLeading, endPoint: .bottomTrailing)
     }
 
     internal func debugBackgroundColor() -> LinearGradient{
