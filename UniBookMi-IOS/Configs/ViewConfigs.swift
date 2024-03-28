@@ -32,7 +32,6 @@ final class UniBookMiColors{
 
 }
 
-
 extension Color {
     init(hex: String) {
         var cleanHexCode = hex.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -46,4 +45,21 @@ extension Color {
         let blueValue = Double(rgb & 0xFF) / 255.0
         self.init(red: redValue, green: greenValue, blue: blueValue)
     }
+}
+
+// MARK: font
+final class UniBookMiFont{
+    static let shared = UniBookMiFont()
+
+    internal func nunitoSmall() -> Font{
+        Font.custom("Nunito-VariableFont_wght", size: 10)
+    }
+    internal func nunitMedium() -> Font{
+        Font.custom("Nunito-VariableFont_wght", size: 20)
+    }
+    internal func nunitoBig() -> Font{
+        Font.custom("Nunito-VariableFont_wght", size: 30)
+    }
+
+
 }

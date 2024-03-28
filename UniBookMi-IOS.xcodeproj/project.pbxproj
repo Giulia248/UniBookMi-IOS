@@ -52,6 +52,8 @@
 		1629B1D52BB46393007ADF0E /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
 		164F396F2BB56A67007F1940 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		164F39712BB57B86007F1940 /* ViewConfigs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConfigs.swift; sourceTree = "<group>"; };
+		164F39742BB58A7B007F1940 /* Nunito-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		164F39752BB58C00007F1940 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		16A64F372BADD10800B659C3 /* UniBookMi-IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UniBookMi-IOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		16A64F3A2BADD10800B659C3 /* UniBookMi_IOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniBookMi_IOSApp.swift; sourceTree = "<group>"; };
 		16A64F3C2BADD10800B659C3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -123,6 +125,14 @@
 			path = Configs;
 			sourceTree = "<group>";
 		};
+		164F39732BB58A2A007F1940 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				164F39742BB58A7B007F1940 /* Nunito-VariableFont_wght.ttf */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		16A64F2E2BADD10800B659C3 = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +153,8 @@
 		16A64F392BADD10800B659C3 /* UniBookMi-IOS */ = {
 			isa = PBXGroup;
 			children = (
+				164F39752BB58C00007F1940 /* Info.plist */,
+				164F39732BB58A2A007F1940 /* Resources */,
 				1629B1D42BB46386007ADF0E /* Configs */,
 				1629B19A2BB45841007ADF0E /* Feature */,
 				1629B1982BB45653007ADF0E /* GoogleService-Info.plist */,
@@ -408,6 +420,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"UniBookMi-IOS/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "UniBookMi-IOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -437,6 +450,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"UniBookMi-IOS/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "UniBookMi-IOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
