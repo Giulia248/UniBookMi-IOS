@@ -6,23 +6,29 @@
 //
 
 import SwiftUI
+import FirebaseCore
 
 struct LoginView: View {
 
+    //superview items
+    @EnvironmentObject var authService: AuthService
+
     // strings
     @State var fullName: String = ""
-    @State var name: String = ""
+    @State var email: String = ""
     @State var password: String = ""
     @State private var title: String = "Autenticazione"
+    @State private var errorMessage: String = "Errore"
+    @State private var passwordText: String = "La password deve contenere almeno 6 caratteri"
 
     // bool
     @State private var loginButtonEnabled = false
     @State private var registerButtonEnabled = true
     @State private var isLogin = true
-    @State private var showAlertLogin = false
-    @State private var showAlertRegister = false
 
-    @State private var viewModel = LoginViewModel()
+    @State private var showAlertError = false
+
+    @State private var viewModel =  LoginViewModel()
 
     var body: some View {
 
@@ -35,31 +41,46 @@ struct LoginView: View {
                         .transition(.opacity)
                     Spacer()
 
-                    if !isLogin{
+                    // MARK: Fields
+                    if !isLogin {
                         UniBookMiTextField(stringField: $fullName, prompt: "Nome")
                             .onChange(of: fullName) {
-                                registerButtonEnabled = viewModel.isLoginEnabled(email: name, password: password) && !fullName.isEmpty
+
+                                registerButtonEnabled = viewModel.isLoginEnabled(email: email, password: password) && !fullName.isEmpty
                             }
                     }
 
-                    UniBookMiTextField(stringField: $name, prompt: "Email")
-                        .onChange(of: name) {
+                    UniBookMiTextField(stringField: $email, prompt: "Email")
+                        .onChange(of: email) {
+
+                            // all lowercase
+                            email = email.lowercased()
+
                             if !isLogin {
-                                registerButtonEnabled = !fullName.isEmpty && viewModel.isLoginEnabled(email: name, password: password)
+                                registerButtonEnabled = !fullName.isEmpty && viewModel.isLoginEnabled(email: email, password: password)
                             } else {
-                                loginButtonEnabled = viewModel.isLoginEnabled(email: name, password: password)
+                                loginButtonEnabled = viewModel.isLoginEnabled(email: email, password: password)
                             }
                         }
                     UniBookMiSecureTextField(stringField: $password, prompt: "Password", showText: false)
                         .onChange(of: password) {
-                            if !isLogin {
-                                registerButtonEnabled = !fullName.isEmpty && viewModel.isLoginEnabled(email: name, password: password)
-                            } else {
-                                loginButtonEnabled = viewModel.isLoginEnabled(email: name, password: password)
-                            }
 
+                            passwordText = password.count >= 6 ? "" : "La password deve contenere almeno 6 caratteri"
+
+                            if !isLogin {
+                                registerButtonEnabled = !fullName.isEmpty && viewModel.isLoginEnabled(email: email, password: password)
+                            } else {
+                                loginButtonEnabled = viewModel.isLoginEnabled(email: email, password: password)
+                            }
                         }
                     Spacer()
+
+                    Text(passwordText)
+                        .lineLimit(2, reservesSpace: true)
+                        .font(UniBookMiFont.shared.nunitMedium())
+                        .animation(.snappy, value: passwordText)
+
+
 
                     // MARK: Login \ register button
                     HStack{
@@ -68,9 +89,11 @@ struct LoginView: View {
                         UniBookMiButton(text: "Accedi", isEnabled: $loginButtonEnabled, action: {
 
                             if isLogin { // if is already login
+                                authService.regularSignIn(email: email, password: password) { error in
+                                    errorMessage = error?.localizedDescription ?? "error"
+                                    showAlertError = true
+                                }
 
-                                print("hai acceduto")
-                                showAlertLogin.toggle()
 
                             }else {
                                 withAnimation {
@@ -81,23 +104,23 @@ struct LoginView: View {
                                 }
 
                             fullName = ""
-                            name = ""
+                            email = ""
                             password = ""
                             }
 
                         })
-                        .alert("Hai fatto accesso", isPresented: $showAlertLogin) {
-                            Button("OK", role: .cancel) {
-                                showAlertLogin.toggle()
-                            }
-                        }
+
 
                         // register BUTTON
                         UniBookMiButton(text: "Registrati", isEnabled: $registerButtonEnabled, action: {
 
                             if !isLogin{
-                                print("hai fatto registrazione")
-                                showAlertRegister.toggle()
+                                
+                                authService.regularCreateAccount(email: email, password: password) { result in
+                                    Task {
+                                        await UniBookMiDatabase.shared.addUser(name: fullName, id: result.user.uid)
+                                    }
+                                }
                             }
                             else{
                                 withAnimation {
@@ -108,20 +131,21 @@ struct LoginView: View {
                                 }
 
                                 fullName = ""
-                                name = ""
+                                email = ""
                                 password = ""
 
                             }
 
                         })
-                        .alert("Ti sei registrato", isPresented: $showAlertRegister) {
-                            Button("OK", role: .cancel) {
-                                showAlertRegister.toggle()
-                            }
-                        }
                     }
                 }
                 .animation(.smooth, value: isLogin)
+                .alert("Error: \(errorMessage)", isPresented: $showAlertError) {
+                    Button("OK", role: .cancel) {
+                        showAlertError.toggle()
+                    }
+                }
+
 
                 .background(.white)
                 .frame(alignment: .center)

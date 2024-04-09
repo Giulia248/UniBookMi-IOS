@@ -6,8 +6,12 @@
 //
 
 import Foundation
+import FirebaseCore
+import FirebaseAuth
+import FirebaseFirestore
 
 final class LoginViewModel: ObservableObject {
+
 
     internal func isLoginEnabled(email: String, password: String) -> Bool{
         return !(email.isEmpty) && !(password.isEmpty) && email.contains("@") && email.contains("unimi.it")

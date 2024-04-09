@@ -8,10 +8,23 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var authService = AuthService()
 
     var body: some View {
-        LoginView()
+        VStack{
+            if authService.signedIn{
+                HomePageView()
+                    .environmentObject(authService)
+            } else {
+                LoginView()
+                    .environmentObject(authService)
+
+            }
+        }
+        .animation(.smooth, value: authService.signedIn)
+
     }
+
 }
 
 #Preview {
