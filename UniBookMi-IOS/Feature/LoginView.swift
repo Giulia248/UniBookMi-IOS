@@ -10,62 +10,128 @@ import SwiftUI
 struct LoginView: View {
 
     // strings
+    @State var fullName: String = ""
     @State var name: String = ""
     @State var password: String = ""
     @State private var title: String = "Autenticazione"
 
     // bool
-    @State private var buttonsEnabled = false
+    @State private var loginButtonEnabled = false
+    @State private var registerButtonEnabled = true
     @State private var isLogin = true
+    @State private var showAlertLogin = false
+    @State private var showAlertRegister = false
 
     @State private var viewModel = LoginViewModel()
 
-
-
-
-
-
     var body: some View {
-        GeometryReader{ geometry in
 
-            VStack(alignment: .center, spacing: 15) {
-                Spacer()
-                Text(title)
-                    .font(UniBookMiFont.shared.nunitoBig())
-                    .transition(.opacity)
-                Spacer()
+        GeometryReader { geometry in
+            Group {
+                VStack(alignment: .center, spacing: 15) {
+                    Spacer()
+                    Text(title)
+                        .font(UniBookMiFont.shared.nunitoBig())
+                        .transition(.opacity)
+                    Spacer()
 
-                UniBookMiTextField(stringField: $name, prompt: "Email")
-                    .onChange(of: name) {
-                        buttonsEnabled = viewModel.isLoginEnabled(email: name, password: password)
+                    if !isLogin{
+                        UniBookMiTextField(stringField: $fullName, prompt: "Nome")
+                            .onChange(of: fullName) {
+                                registerButtonEnabled = viewModel.isLoginEnabled(email: name, password: password) && !fullName.isEmpty
+                            }
                     }
-                UniBookMiSecureTextField(stringField: $password, prompt: "Password", showText: false)
-                    .onChange(of: password) {
-                        buttonsEnabled = viewModel.isLoginEnabled(email: name, password: password)
+
+                    UniBookMiTextField(stringField: $name, prompt: "Email")
+                        .onChange(of: name) {
+                            if !isLogin {
+                                registerButtonEnabled = !fullName.isEmpty && viewModel.isLoginEnabled(email: name, password: password)
+                            } else {
+                                loginButtonEnabled = viewModel.isLoginEnabled(email: name, password: password)
+                            }
+                        }
+                    UniBookMiSecureTextField(stringField: $password, prompt: "Password", showText: false)
+                        .onChange(of: password) {
+                            if !isLogin {
+                                registerButtonEnabled = !fullName.isEmpty && viewModel.isLoginEnabled(email: name, password: password)
+                            } else {
+                                loginButtonEnabled = viewModel.isLoginEnabled(email: name, password: password)
+                            }
+
+                        }
+                    Spacer()
+
+                    // MARK: Login \ register button
+                    HStack{
+
+                        // login BUTTON
+                        UniBookMiButton(text: "Accedi", isEnabled: $loginButtonEnabled, action: {
+
+                            if isLogin { // if is already login
+
+                                print("hai acceduto")
+                                showAlertLogin.toggle()
+
+                            }else {
+                                withAnimation {
+                                    isLogin = true
+                                    title = "Autenticazione"
+                                    loginButtonEnabled = false
+                                    registerButtonEnabled = true
+                                }
+
+                            fullName = ""
+                            name = ""
+                            password = ""
+                            }
+
+                        })
+                        .alert("Hai fatto accesso", isPresented: $showAlertLogin) {
+                            Button("OK", role: .cancel) {
+                                showAlertLogin.toggle()
+                            }
+                        }
+
+                        // register BUTTON
+                        UniBookMiButton(text: "Registrati", isEnabled: $registerButtonEnabled, action: {
+
+                            if !isLogin{
+                                print("hai fatto registrazione")
+                                showAlertRegister.toggle()
+                            }
+                            else{
+                                withAnimation {
+                                    isLogin = false
+                                    title = "Registrazione"
+                                    loginButtonEnabled = true
+                                    registerButtonEnabled = false
+                                }
+
+                                fullName = ""
+                                name = ""
+                                password = ""
+
+                            }
+
+                        })
+                        .alert("Ti sei registrato", isPresented: $showAlertRegister) {
+                            Button("OK", role: .cancel) {
+                                showAlertRegister.toggle()
+                            }
+                        }
                     }
-                Spacer()
-
-                // MARK: Login \ register button
-                HStack{
-
-                    // login
-                    UniBookMiButton(text: "Accedi", isEnabled: $buttonsEnabled, action: {
-                        print("Efefe accedi")
-                        print("password e email \(name) \(password)")
-                    })
-
-                    // register
-                    UniBookMiButton(text: "Registrati", isEnabled: $buttonsEnabled, action: {
-                        print("Efefe registtra")
-                    })
                 }
+                .animation(.smooth, value: isLogin)
+
+                .background(.white)
+                .frame(alignment: .center)
+                .cornerRadius(15)
+                .padding(.horizontal, 10)
+                .padding(.vertical, geometry.size.height / 3.8)
+                .shadow(radius: 5)
+
             }
-            .background(.white)
-            .frame(alignment: .center)
-            .cornerRadius(15)
-            .padding(.horizontal, 10)
-            .padding(.vertical, geometry.size.height / 4)
-            .shadow(radius: 5)
+
         }
         .background(
             UniBookMiColors.shared.backgroundColor()
