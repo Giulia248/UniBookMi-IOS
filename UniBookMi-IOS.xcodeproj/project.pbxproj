@@ -43,6 +43,8 @@
 		164F397A2BB5A8A5007F1940 /* UniBookMiFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164F39792BB5A8A5007F1940 /* UniBookMiFont.swift */; };
 		164F397C2BB5A8D1007F1940 /* UniBookMiColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164F397B2BB5A8D1007F1940 /* UniBookMiColors.swift */; };
 		164F397E2BB5AB75007F1940 /* UniBookMiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164F397D2BB5AB75007F1940 /* UniBookMiTextField.swift */; };
+		164F39822BB5DA96007F1940 /* logo.ico in Resources */ = {isa = PBXBuildFile; fileRef = 164F39812BB5DA96007F1940 /* logo.ico */; };
+		164F39842BB5DBA6007F1940 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 164F39832BB5DBA6007F1940 /* logo.png */; };
 		16A64F3B2BADD10800B659C3 /* UniBookMi_IOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A64F3A2BADD10800B659C3 /* UniBookMi_IOSApp.swift */; };
 		16A64F3D2BADD10800B659C3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A64F3C2BADD10800B659C3 /* ContentView.swift */; };
 		16A64F3F2BADD10B00B659C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16A64F3E2BADD10B00B659C3 /* Assets.xcassets */; };
@@ -60,6 +62,8 @@
 		164F39792BB5A8A5007F1940 /* UniBookMiFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniBookMiFont.swift; sourceTree = "<group>"; };
 		164F397B2BB5A8D1007F1940 /* UniBookMiColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniBookMiColors.swift; sourceTree = "<group>"; };
 		164F397D2BB5AB75007F1940 /* UniBookMiTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniBookMiTextField.swift; sourceTree = "<group>"; };
+		164F39812BB5DA96007F1940 /* logo.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = logo.ico; sourceTree = "<group>"; };
+		164F39832BB5DBA6007F1940 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		16A64F372BADD10800B659C3 /* UniBookMi-IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UniBookMi-IOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		16A64F3A2BADD10800B659C3 /* UniBookMi_IOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniBookMi_IOSApp.swift; sourceTree = "<group>"; };
 		16A64F3C2BADD10800B659C3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -133,6 +137,8 @@
 		164F39732BB58A2A007F1940 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				164F39832BB5DBA6007F1940 /* logo.png */,
+				164F39812BB5DA96007F1940 /* logo.ico */,
 				164F39762BB58DEE007F1940 /* UIComponents */,
 				164F39742BB58A7B007F1940 /* Nunito-VariableFont_wght.ttf */,
 				164F39792BB5A8A5007F1940 /* UniBookMiFont.swift */,
@@ -284,7 +290,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				16A64F422BADD10B00B659C3 /* Preview Assets.xcassets in Resources */,
+				164F39842BB5DBA6007F1940 /* logo.png in Resources */,
 				16A64F3F2BADD10B00B659C3 /* Assets.xcassets in Resources */,
+				164F39822BB5DA96007F1940 /* logo.ico in Resources */,
 				1629B1992BB45654007ADF0E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -441,11 +449,12 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "UniBookMi-IOS/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "UniBookMi-IOS";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -471,11 +480,12 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "UniBookMi-IOS/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "UniBookMi-IOS";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
