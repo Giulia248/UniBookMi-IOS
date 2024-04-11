@@ -1,6 +1,8 @@
 # UniBookMi-IOS
 UniBookMi IOS version
 
+Target IOS  >= 17 only
+
 ## UniBookMi is an University project made based on registration and reserving rooms
 UniBookMi was originally made for the web platform -> https://github.com/Giulia248/UniBookMi
 
