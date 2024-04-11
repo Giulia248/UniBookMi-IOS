@@ -11,7 +11,7 @@ import FirebaseCore
 
 struct HomePageView: View {
 
-    @EnvironmentObject var authService: AuthService
+    @State var viewModel: HomePageViewModel
 
     @State var allowButton = true
     @State var errorLogout = false
@@ -22,20 +22,18 @@ struct HomePageView: View {
         VStack{
             Text("UniBookMi")
 
-            Text("Benvenuto \(authService.user?.name ?? "")")
+            Text("Benvenuto \(viewModel.authService.user?.name ?? "")")
                 .font(UniBookMiFont.shared.nunitMedium())
 
             UniBookMiButton(text: "Logout", isEnabled: $allowButton) {
 
-                ProgressHUD.animate(nil, GlobalConfigurations.shared.loadingAnimation)
+                viewModel.logout { error in
+                    if let error {
+                        errorLogout = true
+                        errorLogoutString = error.localizedDescription
 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0 ) {
-                    ProgressHUD.dismiss()
-                }
-                
-                authService.regularSignOut { error in
-                    errorLogout = true
-                    errorLogoutString = error?.localizedDescription ?? "error unknown"
+                    }
+
                 }
             }
             .alert("Errore \(errorLogoutString)", isPresented: $errorLogout) {
@@ -47,8 +45,4 @@ struct HomePageView: View {
 
         }
     }
-}
-
-#Preview {
-    HomePageView()
 }

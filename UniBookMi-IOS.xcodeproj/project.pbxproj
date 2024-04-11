@@ -47,6 +47,8 @@
 		164F39842BB5DBA6007F1940 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 164F39832BB5DBA6007F1940 /* logo.png */; };
 		168354D72BC7E029000E57AD /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168354D62BC7E029000E57AD /* UserModel.swift */; };
 		168354D92BC81941000E57AD /* GlobalConfigurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168354D82BC81941000E57AD /* GlobalConfigurations.swift */; };
+		168354DB2BC83073000E57AD /* HomePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168354DA2BC83073000E57AD /* HomePageViewModel.swift */; };
+		168354DD2BC83893000E57AD /* UniBookMiStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168354DC2BC83893000E57AD /* UniBookMiStrings.swift */; };
 		16A64F3B2BADD10800B659C3 /* UniBookMi_IOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A64F3A2BADD10800B659C3 /* UniBookMi_IOSApp.swift */; };
 		16A64F3D2BADD10800B659C3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A64F3C2BADD10800B659C3 /* ContentView.swift */; };
 		16A64F3F2BADD10B00B659C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16A64F3E2BADD10B00B659C3 /* Assets.xcassets */; };
@@ -71,6 +73,8 @@
 		164F39832BB5DBA6007F1940 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		168354D62BC7E029000E57AD /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		168354D82BC81941000E57AD /* GlobalConfigurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConfigurations.swift; sourceTree = "<group>"; };
+		168354DA2BC83073000E57AD /* HomePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewModel.swift; sourceTree = "<group>"; };
+		168354DC2BC83893000E57AD /* UniBookMiStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniBookMiStrings.swift; sourceTree = "<group>"; };
 		16A64F372BADD10800B659C3 /* UniBookMi-IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UniBookMi-IOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		16A64F3A2BADD10800B659C3 /* UniBookMi_IOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniBookMi_IOSApp.swift; sourceTree = "<group>"; };
 		16A64F3C2BADD10800B659C3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -141,6 +145,7 @@
 			children = (
 				1629B1D52BB46393007ADF0E /* Navigation.swift */,
 				168354D82BC81941000E57AD /* GlobalConfigurations.swift */,
+				168354DC2BC83893000E57AD /* UniBookMiStrings.swift */,
 			);
 			path = Configs;
 			sourceTree = "<group>";
@@ -231,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				16CCC7072BC5777C003C83DF /* HomePageView.swift */,
+				168354DA2BC83073000E57AD /* HomePageViewModel.swift */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";
@@ -359,12 +365,14 @@
 				168354D72BC7E029000E57AD /* UserModel.swift in Sources */,
 				16CCC7082BC5777C003C83DF /* HomePageView.swift in Sources */,
 				168354D92BC81941000E57AD /* GlobalConfigurations.swift in Sources */,
+				168354DD2BC83893000E57AD /* UniBookMiStrings.swift in Sources */,
 				16CCC70B2BC57A96003C83DF /* AuthService.swift in Sources */,
 				164F397C2BB5A8D1007F1940 /* UniBookMiColors.swift in Sources */,
 				164F397E2BB5AB75007F1940 /* UniBookMiTextField.swift in Sources */,
 				164F39782BB58E03007F1940 /* UniBookMiButton.swift in Sources */,
 				164F39702BB56A67007F1940 /* LoginViewModel.swift in Sources */,
 				1629B1D62BB46393007ADF0E /* Navigation.swift in Sources */,
+				168354DB2BC83073000E57AD /* HomePageViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
+    
     @StateObject var authService = AuthService()
 
     var body: some View {
         VStack{
             if authService.signedIn{
-                HomePageView()
-                    .environmentObject(authService)
+                HomePageView(viewModel: HomePageViewModel(authService: authService))
+
             } else {
                 LoginView(viewModel: LoginViewModel(authService: authService))
             }

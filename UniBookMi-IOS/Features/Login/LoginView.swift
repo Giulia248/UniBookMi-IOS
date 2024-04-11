@@ -10,15 +10,14 @@ import FirebaseCore
 
 struct LoginView: View {
 
-    //superview items
-    @EnvironmentObject var authService: AuthService
+    @State var viewModel: LoginViewModel
 
     // strings
     @State var fullName: String = ""
     @State var email: String = ""
     @State var password: String = ""
-    @State private var title: String = "Autenticazione"
-    @State private var errorMessage: String = "Errore"
+    @State private var title: String = UniBookMiStrings.autenticazione
+    @State private var errorMessage: String = UniBookMiStrings.errore
     @State private var passwordText: String = ""
 
     // bool
@@ -27,8 +26,6 @@ struct LoginView: View {
     @State private var isLogin = true
 
     @State private var showAlertError = false
-
-    @State internal var viewModel: LoginViewModel
 
     var body: some View {
 
@@ -43,7 +40,7 @@ struct LoginView: View {
 
                     // MARK: Fields
                     if !isLogin {
-                        UniBookMiTextField(stringField: $fullName, prompt: "Nome")
+                        UniBookMiTextField(stringField: $fullName, prompt: UniBookMiStrings.nome)
                             .onChange(of: fullName) {
 
                                 registerButtonEnabled = viewModel.isLoginEnabled(email: email, password: password) && !fullName.isEmpty
