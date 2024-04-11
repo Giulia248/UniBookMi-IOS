@@ -12,20 +12,28 @@ import FirebaseAuth
 import CryptoKit
 import AuthenticationServices
 
-class AuthService: NSObject, ObservableObject, ASAuthorizationControllerDelegate  {
+final class AuthService: NSObject, ObservableObject, ASAuthorizationControllerDelegate  {
 
     @Published var signedIn: Bool = false
+    @Published var user: UserModel?
 
     // Unhashed nonce.
     var currentNonce: String?
 
     override init() {
         super.init()
-        Auth.auth().addStateDidChangeListener() { auth, user in
+        Auth.auth().addStateDidChangeListener() { [weak self] auth, user in
             if user != nil {
-                self.signedIn = true
+                self?.signedIn = true
+                UniBookMiDatabase.shared.findUser(email: user?.email ?? "") { user, error in
+                    if let user {
+                        self?.user = UserModel(name: user.name, email: user.email)
+                    } else {
+                        print("NO USER FOUND \(error?.localizedDescription ?? "")")
+                    }
+                }
             } else {
-                self.signedIn = false
+                self?.signedIn = false
             }
         }
     }

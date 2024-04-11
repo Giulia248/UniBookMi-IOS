@@ -12,8 +12,10 @@ struct ContentView: View {
 
     var body: some View {
         VStack{
+
                 if authService.signedIn{
                     HomePageView()
+                        .environmentObject(authService)
                 } else {
                     LoginView(viewModel: LoginViewModel(authService: authService))
                 }

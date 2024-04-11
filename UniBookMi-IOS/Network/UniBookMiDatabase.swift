@@ -14,17 +14,30 @@ final class UniBookMiDatabase {
     private let dataBase = Firestore.firestore()
 
 
-    internal func addUser(name: String, id: String) async {
+    internal func addUser(name: String, email: String) async {
 
         do {
-          let ref = try await dataBase.collection("users").addDocument(data: [
-            "name": name,
-            "id": id
-          ])
-          print("Document added with ID: \(ref.documentID)")
+            let ref = try await dataBase.collection("users").addDocument(data: [
+                "name": name,
+                "email": email
+            ])
+            print("Document added with ID: \(ref.documentID)")
         } catch {
-          print("Error adding document: \(error)")
+            print("Error adding document: \(error)")
         }
     }
 
+    internal func findUser(email: String, completion: @escaping (UserModel?, Error?) -> Void ) {
+        self.dataBase.collection("users").whereField("email", isEqualTo: email).getDocuments { (snapshot, err) in
+            if let err = err {
+                completion(nil, err)
+            } else {
+                for document in snapshot?.documents ?? []{
+                    let user = UserModel(name: document.get("name") as? String, email: document.get("email") as? String)
+                    completion(user, nil)
+                }
+            }
+        }
+
+    }
 }

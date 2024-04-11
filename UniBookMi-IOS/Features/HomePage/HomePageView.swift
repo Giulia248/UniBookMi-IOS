@@ -20,6 +20,9 @@ struct HomePageView: View {
         VStack{
             Text("UniBookMi")
 
+            Text("Benvenuto \(authService.user?.name ?? "")")
+                .font(UniBookMiFont.shared.nunitMedium())
+
             UniBookMiButton(text: "Logout", isEnabled: $allowButton) {
                 authService.regularSignOut { error in
                     errorLogout = true
