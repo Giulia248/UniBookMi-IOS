@@ -12,21 +12,14 @@ struct ContentView: View {
 
     var body: some View {
         VStack{
-            if authService.signedIn{
-                HomePageView()
-                    .environmentObject(authService)
-            } else {
-                LoginView()
-                    .environmentObject(authService)
-
-            }
+                if authService.signedIn{
+                    HomePageView()
+                } else {
+                    LoginView(viewModel: LoginViewModel(authService: authService))
+                }
         }
         .animation(.smooth, value: authService.signedIn)
 
     }
 
-}
-
-#Preview {
-    ContentView()
 }

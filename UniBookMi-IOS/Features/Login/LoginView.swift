@@ -19,7 +19,7 @@ struct LoginView: View {
     @State var password: String = ""
     @State private var title: String = "Autenticazione"
     @State private var errorMessage: String = "Errore"
-    @State private var passwordText: String = "La password deve contenere almeno 6 caratteri"
+    @State private var passwordText: String = ""
 
     // bool
     @State private var loginButtonEnabled = false
@@ -28,7 +28,7 @@ struct LoginView: View {
 
     @State private var showAlertError = false
 
-    @State private var viewModel =  LoginViewModel()
+    @State internal var viewModel: LoginViewModel
 
     var body: some View {
 
@@ -65,7 +65,7 @@ struct LoginView: View {
                     UniBookMiSecureTextField(stringField: $password, prompt: "Password", showText: false)
                         .onChange(of: password) {
 
-                            passwordText = password.count >= 6 ? "" : "La password deve contenere almeno 6 caratteri"
+                            passwordText = (password.count >= 6) && !isLogin ? "" : "La password deve contenere almeno 6 caratteri"
 
                             if !isLogin {
                                 registerButtonEnabled = !fullName.isEmpty && viewModel.isLoginEnabled(email: email, password: password)
@@ -89,41 +89,46 @@ struct LoginView: View {
                         UniBookMiButton(text: "Accedi", isEnabled: $loginButtonEnabled, action: {
 
                             if isLogin { // if is already login
-                                authService.regularSignIn(email: email, password: password) { error in
-                                    errorMessage = error?.localizedDescription ?? "error"
-                                    showAlertError = true
-                                }
 
+                                viewModel.login(email: email, password: password) { errorDescription in
+                                    if !(errorDescription.isEmpty) {
+                                        showAlertError = true
+                                        errorMessage = errorDescription
+
+                                    }
+                                }
 
                             }else {
                                 withAnimation {
+                                    passwordText = ""
                                     isLogin = true
                                     title = "Autenticazione"
                                     loginButtonEnabled = false
                                     registerButtonEnabled = true
                                 }
 
-                            fullName = ""
-                            email = ""
-                            password = ""
+                                fullName = ""
+                                email = ""
+                                password = ""
                             }
 
                         })
-
-
                         // register BUTTON
                         UniBookMiButton(text: "Registrati", isEnabled: $registerButtonEnabled, action: {
 
                             if !isLogin{
-                                
-                                authService.regularCreateAccount(email: email, password: password) { result in
-                                    Task {
-                                        await UniBookMiDatabase.shared.addUser(name: fullName, id: result.user.uid)
+
+                                viewModel.register(email: email, password: password, name: fullName) { errorDescription in
+                                    if !(errorDescription.isEmpty) {
+                                        showAlertError = true
+                                        errorMessage = errorDescription
                                     }
                                 }
+
                             }
                             else{
                                 withAnimation {
+                                    passwordText = "La password deve contenere almeno 6 caratteri"
                                     isLogin = false
                                     title = "Registrazione"
                                     loginButtonEnabled = true
@@ -162,10 +167,4 @@ struct LoginView: View {
         )
     }
 
-}
-
-struct LoginView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginView()
-    }
 }

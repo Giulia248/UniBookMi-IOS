@@ -24,28 +24,24 @@ class AuthService: NSObject, ObservableObject, ASAuthorizationControllerDelegate
         Auth.auth().addStateDidChangeListener() { auth, user in
             if user != nil {
                 self.signedIn = true
-                print("Auth state changed, is signed in")
             } else {
                 self.signedIn = false
-                print("Auth state changed, is signed out")
             }
         }
     }
 
     // MARK: - Password Account
-    func regularCreateAccount(email: String, password: String, completion: @escaping (AuthDataResult) -> Void) {
+    func regularCreateAccount(email: String, password: String, completion: @escaping (AuthDataResult?, Error?) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if let e = error {
 
                 print(e.localizedDescription)
+                completion(nil, error)
 
             } else {
                 if let result = authResult {
-                    completion(result)
-                    print("AUTH RESULT \(result)")
+                    completion(result, nil)
                 }
-
-                print("Successfully created password account")
             }
 
 
@@ -59,7 +55,6 @@ class AuthService: NSObject, ObservableObject, ASAuthorizationControllerDelegate
             if let e = error {
                 completion(e)
             } else {
-                print("Login success")
                 completion(nil)
             }
         }
