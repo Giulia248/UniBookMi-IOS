@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import ProgressHUD
+import FirebaseCore
 
 struct HomePageView: View {
 
@@ -24,6 +26,13 @@ struct HomePageView: View {
                 .font(UniBookMiFont.shared.nunitMedium())
 
             UniBookMiButton(text: "Logout", isEnabled: $allowButton) {
+
+                ProgressHUD.animate(nil, GlobalConfigurations.shared.loadingAnimation)
+
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0 ) {
+                    ProgressHUD.dismiss()
+                }
+                
                 authService.regularSignOut { error in
                     errorLogout = true
                     errorLogoutString = error?.localizedDescription ?? "error unknown"

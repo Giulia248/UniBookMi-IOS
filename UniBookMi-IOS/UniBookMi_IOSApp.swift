@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import ProgressHUD
 import FirebaseCore
 import FirebaseFirestore
 
@@ -20,11 +21,12 @@ struct UniBookMi_IOSApp: App {
 }
 
 class AppDelegate: NSObject, UIApplicationDelegate {
-  func application(_ application: UIApplication,
-                   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-    FirebaseApp.configure()
-    
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        FirebaseApp.configure()
+        ProgressHUD.colorAnimation = .systemBlue
 
-    return true
-  }
+
+        return true
+    }
 }

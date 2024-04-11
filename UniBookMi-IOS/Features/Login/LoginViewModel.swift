@@ -20,13 +20,14 @@ final class LoginViewModel: ObservableObject {
         self.authService = authService
     }
 
+    /// checks if all the parameters are correct for sign up \ in
     internal func isLoginEnabled(email: String, password: String) -> Bool{
         return !(email.isEmpty) && !(password.isEmpty) && email.contains("@") && email.contains("unimi.it") && password.count >= 6
     }
 
     /// login function that returns description of the error if it occured occurred
     internal func login(email: String, password: String, completion: @escaping (String) -> Void){
-        ProgressHUD.animate("", AnimationType.ballVerticalBounce)
+        ProgressHUD.animate(nil, GlobalConfigurations.shared.loadingAnimation)
 
         authService.regularSignIn(email: email, password: password) { error in
             completion(error?.localizedDescription ?? "error")
@@ -40,12 +41,17 @@ final class LoginViewModel: ObservableObject {
             }
         }
         completion("")
-        ProgressHUD.dismiss()
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0 ) {
+            ProgressHUD.dismiss()
+        }
+
     }
 
+    /// register function that returns description of the error if it occured occurred
     internal func register(email: String, password: String, name: String, completion: @escaping (String) -> Void){
 
-        ProgressHUD.animate("", AnimationType.ballVerticalBounce)
+        ProgressHUD.animate(nil, GlobalConfigurations.shared.loadingAnimation)
 
         authService.regularCreateAccount(email: email, password: password) { [weak self] result, error in
             if let error {
@@ -60,7 +66,9 @@ final class LoginViewModel: ObservableObject {
 
         }
 
-        ProgressHUD.dismiss()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0 ) {
+            ProgressHUD.dismiss()
+        }
 
     }
 
