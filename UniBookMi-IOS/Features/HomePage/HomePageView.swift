@@ -15,17 +15,25 @@ struct HomePageView: View {
 
     @State var allowButton = true
     @State var errorLogout = false
-    @State var errorLogoutString = "errore"
+    @State var errorLogoutString = UniBookMiStrings.errore
 
     var body: some View {
 
         VStack{
-            Text("UniBookMi")
 
-            Text("Benvenuto \(viewModel.authService.user?.name ?? "")")
+            HStack {
+                Text(UniBookMiStrings.title)
+                    .font(UniBookMiFont.shared.nunitMedium())
+                    .tint(UniBookMiColors.shared.darkBlue2)
+                Text(UniBookMiStrings.homePage)
+                    .font(UniBookMiFont.shared.nunitMedium())
+                    .tint(Color(hex: "#7D7F7F"))
+            }
+
+            Text("\(UniBookMiStrings.benvenuto) \(viewModel.authService.user?.name ?? "")")
                 .font(UniBookMiFont.shared.nunitMedium())
 
-            UniBookMiButton(text: "Logout", isEnabled: $allowButton) {
+            UniBookMiButton(text: UniBookMiStrings.logout, isEnabled: $allowButton) {
 
                 viewModel.logout { error in
                     if let error {
@@ -36,7 +44,7 @@ struct HomePageView: View {
 
                 }
             }
-            .alert("Errore \(errorLogoutString)", isPresented: $errorLogout) {
+            .alert("\(UniBookMiStrings.errore) \(errorLogoutString)", isPresented: $errorLogout) {
                 Button("OK", role: .cancel) {
                     errorLogout = false
                 }

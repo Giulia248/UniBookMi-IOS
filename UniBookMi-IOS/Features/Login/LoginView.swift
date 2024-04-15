@@ -62,7 +62,7 @@ struct LoginView: View {
                     UniBookMiSecureTextField(stringField: $password, prompt: "Password", showText: false)
                         .onChange(of: password) {
 
-                            passwordText = (password.count >= 6) || isLogin ? "" : "La password deve contenere almeno 6 caratteri"
+                            passwordText = (password.count >= 6) || isLogin ? "" : UniBookMiStrings.passwordSeiCaratteri
 
                             if !isLogin {
                                 registerButtonEnabled = !fullName.isEmpty && viewModel.isLoginEnabled(email: email, password: password)
@@ -83,7 +83,7 @@ struct LoginView: View {
                     HStack{
 
                         // login BUTTON
-                        UniBookMiButton(text: "Accedi", isEnabled: $loginButtonEnabled, action: {
+                        UniBookMiButton(text: UniBookMiStrings.accedi, isEnabled: $loginButtonEnabled, action: {
 
                             if isLogin { // if is already login
 
@@ -99,7 +99,7 @@ struct LoginView: View {
                                 withAnimation {
                                     passwordText = ""
                                     isLogin = true
-                                    title = "Autenticazione"
+                                    title = UniBookMiStrings.autenticazione
                                     loginButtonEnabled = false
                                     registerButtonEnabled = true
                                 }
@@ -111,7 +111,7 @@ struct LoginView: View {
 
                         })
                         // register BUTTON
-                        UniBookMiButton(text: "Registrati", isEnabled: $registerButtonEnabled, action: {
+                        UniBookMiButton(text: UniBookMiStrings.registrati, isEnabled: $registerButtonEnabled, action: {
 
                             if !isLogin{
 
@@ -125,9 +125,9 @@ struct LoginView: View {
                             }
                             else{
                                 withAnimation {
-                                    passwordText = "La password deve contenere almeno 6 caratteri"
+                                    passwordText = UniBookMiStrings.passwordSeiCaratteri
                                     isLogin = false
-                                    title = "Registrazione"
+                                    title = UniBookMiStrings.registrazione
                                     loginButtonEnabled = true
                                     registerButtonEnabled = false
                                 }
