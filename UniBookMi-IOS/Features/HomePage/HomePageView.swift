@@ -24,10 +24,13 @@ struct HomePageView: View {
             HStack {
                 Text(UniBookMiStrings.title)
                     .font(UniBookMiFont.shared.nunitMedium())
+                    .foregroundStyle(LinearGradient(colors: [UniBookMiColors.shared.darkBlue2],
+                                                    startPoint: .leading, endPoint: .trailing))
                     .tint(UniBookMiColors.shared.darkBlue2)
                 Text(UniBookMiStrings.homePage)
                     .font(UniBookMiFont.shared.nunitMedium())
-                    .tint(Color(hex: "#7D7F7F"))
+                    .foregroundStyle(LinearGradient(colors: [Color(hex: "#7D7F7F")],
+                                                    startPoint: .leading, endPoint: .trailing))
             }
 
             Text("\(UniBookMiStrings.benvenuto) \(viewModel.authService.user?.name ?? "")")

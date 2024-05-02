@@ -15,6 +15,16 @@ final class GlobalConfigurations {
 
     internal let loadingAnimation = AnimationType.horizontalDotScaling
 
+    public func UniBookMiLog(_ text: String, _ function: String, _ alert: Bool? = nil) {
+        var alertIcon = alert != nil ? "❗️" : ""
+        print("--------\(alertIcon)---------")
+        print("Function -> \(function)")
+        print("debugs -> \(text)")
+        print("----------\(alertIcon)-------")
+
+    }
+
+
     init(){
 
 

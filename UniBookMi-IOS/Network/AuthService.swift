@@ -29,7 +29,7 @@ final class AuthService: NSObject, ObservableObject, ASAuthorizationControllerDe
                     if let user {
                         self?.user = UserModel(name: user.name, email: user.email)
                     } else {
-                        print("NO USER FOUND \(error?.localizedDescription ?? "")")
+                        GlobalConfigurations.shared.UniBookMiLog("NO USER FOUND \(error?.localizedDescription ?? "")", "AuthService init")
                     }
                 }
             } else {
@@ -43,7 +43,7 @@ final class AuthService: NSObject, ObservableObject, ASAuthorizationControllerDe
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if let e = error {
 
-                print(e.localizedDescription)
+                GlobalConfigurations.shared.UniBookMiLog(e.localizedDescription, "AuthService > regularCreateAccount")
                 completion(nil, error)
 
             } else {
@@ -76,8 +76,9 @@ final class AuthService: NSObject, ObservableObject, ASAuthorizationControllerDe
             try firebaseAuth.signOut()
             completion(nil)
         } catch let signOutError as NSError {
-          print("Error signing out: %@", signOutError)
-          completion(signOutError)
+
+            GlobalConfigurations.shared.UniBookMiLog("Error signing out: %@ \(signOutError)", "AuthService > regularSignOut")
+            completion(signOutError)
         }
     }
 }

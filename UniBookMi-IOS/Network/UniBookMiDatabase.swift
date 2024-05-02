@@ -21,9 +21,9 @@ final class UniBookMiDatabase {
                 "name": name,
                 "email": email
             ])
-            print("Document added with ID: \(ref.documentID)")
+            GlobalConfigurations.shared.UniBookMiLog("Document added with ID: \(ref.documentID)", "UniBookMiDatabase > addUser")
         } catch {
-            print("Error adding document: \(error)")
+            GlobalConfigurations.shared.UniBookMiLog("Error adding document: \(error)", "UniBookMiDatabase > addUser")
         }
     }
 
