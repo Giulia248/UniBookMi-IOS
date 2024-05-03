@@ -14,7 +14,15 @@ struct ContentView: View {
     var body: some View {
         VStack{
             if authService.signedIn{
-                HomePageView(viewModel: HomePageViewModel(authService: authService))
+
+                TabView {
+
+                    HomePageView(viewModel: HomePageViewModel(authService: authService))
+                        .tabItem {
+                                            Label("Menu", systemImage: "list.dash")
+                                        }
+                }
+
 
             } else {
                 LoginView(viewModel: LoginViewModel(authService: authService))

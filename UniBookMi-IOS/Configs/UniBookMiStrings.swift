@@ -28,6 +28,11 @@ final class UniBookMiStrings {
     static let benvenuto = "Benvenuto"
     static let logout = "Logout"
     static let homePage = "Home Page"
+    static let welcome = "Benvenuto!\nAssicurati il tuo spazio d'apprendimento preferito!"
+    static let dashboard = "Dashboard"
+    static let news = "News"
+    static let reservation = "Prenotazioni Aule"
+    static let contacts = "Contatti"
 
 
 

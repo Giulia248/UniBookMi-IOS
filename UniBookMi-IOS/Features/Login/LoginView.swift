@@ -110,6 +110,8 @@ struct LoginView: View {
                             }
 
                         })
+                        .padding()
+
                         // register BUTTON
                         UniBookMiButton(text: UniBookMiStrings.registrati, isEnabled: $registerButtonEnabled, action: {
 
@@ -139,6 +141,7 @@ struct LoginView: View {
                             }
 
                         })
+                        .padding()
                     }
                 }
                 .animation(.smooth, value: isLogin)

@@ -35,7 +35,6 @@ struct UniBookMiButton: View {
             )
             .cornerRadius(20)
             .disabled(!(isEnabled))
-            .padding()
     }
 }
 
