@@ -39,6 +39,15 @@ final class UniBookMiStrings {
 
     static let contacts = "Contatti"
 
+    static let contactsTextOne = "Abbiamo le risposte che cerchi e siamo pronti ad ascoltarti.\nContattaci oggi stesso e trasforma le tue domande in soluzioni."
+    static let contactsAddress = "Via Festa del Perdono 7,\n20122 Milano, Italia"
+    static let contactsPhone =  "Telefono:\n+39 02 5032 5032"
+    static let contactsMail =  "Emai:\nunimi@postecert.it"
+    static let writeYourMessage = "Scrivi il tuo messaggio"
+    static let contactMethod = "Come vuoi essere ricontattato"
+    static let send = "Invia"
+
+
 
 
 }

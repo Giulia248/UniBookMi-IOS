@@ -27,11 +27,11 @@ struct ContentView: View {
                     .navigationDestination(for: NavigationViews.self) { page in
                         switch page {
                         case .contacts:
-                            ContactsView(colorText: .green)
+                            ContactsView()
                                 .environmentObject(navigationManager)
 
                         case .news:
-                            ContactsView(colorText: .blue)
+                            EmptyView()
                         }
 
                     }

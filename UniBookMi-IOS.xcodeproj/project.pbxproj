@@ -57,6 +57,8 @@
 		16CCC70B2BC57A96003C83DF /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CCC70A2BC57A96003C83DF /* AuthService.swift */; };
 		16CCC70D2BC582A1003C83DF /* UniBookMiDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CCC70C2BC582A1003C83DF /* UniBookMiDatabase.swift */; };
 		16EDBA502BEA163B00C45D75 /* ContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EDBA4F2BEA163B00C45D75 /* ContactsView.swift */; };
+		16EDBA532BEA671900C45D75 /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EDBA522BEA671900C45D75 /* MailView.swift */; };
+		16EDBA552BEA6A2700C45D75 /* EmailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EDBA542BEA6A2700C45D75 /* EmailController.swift */; };
 		16F732CE2BE3C818004506CC /* BookVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 16F732CD2BE3C818004506CC /* BookVideo.mp4 */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +88,8 @@
 		16CCC70A2BC57A96003C83DF /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		16CCC70C2BC582A1003C83DF /* UniBookMiDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniBookMiDatabase.swift; sourceTree = "<group>"; };
 		16EDBA4F2BEA163B00C45D75 /* ContactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsView.swift; sourceTree = "<group>"; };
+		16EDBA522BEA671900C45D75 /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
+		16EDBA542BEA6A2700C45D75 /* EmailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailController.swift; sourceTree = "<group>"; };
 		16F732CD2BE3C818004506CC /* BookVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = BookVideo.mp4; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -260,6 +264,8 @@
 			isa = PBXGroup;
 			children = (
 				16EDBA4F2BEA163B00C45D75 /* ContactsView.swift */,
+				16EDBA522BEA671900C45D75 /* MailView.swift */,
+				16EDBA542BEA6A2700C45D75 /* EmailController.swift */,
 			);
 			path = Contacts;
 			sourceTree = "<group>";
@@ -378,7 +384,9 @@
 				16A64F3D2BADD10800B659C3 /* ContentView.swift in Sources */,
 				164F397A2BB5A8A5007F1940 /* UniBookMiFont.swift in Sources */,
 				16A64F3B2BADD10800B659C3 /* UniBookMi_IOSApp.swift in Sources */,
+				16EDBA552BEA6A2700C45D75 /* EmailController.swift in Sources */,
 				168354D72BC7E029000E57AD /* UserModel.swift in Sources */,
+				16EDBA532BEA671900C45D75 /* MailView.swift in Sources */,
 				16CCC7082BC5777C003C83DF /* HomePageView.swift in Sources */,
 				168354D92BC81941000E57AD /* GlobalConfigurations.swift in Sources */,
 				168354DD2BC83893000E57AD /* UniBookMiStrings.swift in Sources */,
