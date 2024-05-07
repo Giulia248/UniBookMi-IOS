@@ -14,6 +14,7 @@ import FirebaseCore
 struct HomePageView: View {
 
     @State var viewModel: HomePageViewModel
+    @EnvironmentObject var navigationManager: NavigationManager
 
     @State var allowButton = true
     @State var errorLogout = false
@@ -22,7 +23,6 @@ struct HomePageView: View {
     @State var player: AVPlayer?
 
     var body: some View {
-
         GeometryReader { geometry in
 
             VStack{
@@ -44,44 +44,46 @@ struct HomePageView: View {
                     .padding()
                     .frame(width: geometry.size.width / 3.5, height: geometry.size.width / 3.5, alignment: .center)
 
-                    ZStack (alignment: .leading) {
-                        VideoPlayer(player: player)
-                            .frame(width: geometry.size.width, height: 200)
+                ZStack (alignment: .leading) {
+                    VideoPlayer(player: player)
+                        .frame(width: geometry.size.width, height: 200)
 
-                            .allowsHitTesting(false)
-                            .opacity(0.6)
+                        .allowsHitTesting(false)
+                        .opacity(0.6)
 
-                        Text(UniBookMiStrings.welcome)
-                            .font(UniBookMiFont.shared.nunitoBig())
-                            .frame(width: geometry.size.width)
-                            .foregroundStyle(LinearGradient(colors: [.white],
-                                                            startPoint: .leading, endPoint: .trailing))
-                            .lineLimit(3)
-                            .padding(.leading, 1)
-
-
-                        Text(UniBookMiStrings.welcome)
-                            .font(UniBookMiFont.shared.nunitoBig())
-                            .frame(width: geometry.size.width)
-                            .lineLimit(3)
+                    Text(UniBookMiStrings.welcome)
+                        .font(UniBookMiFont.shared.nunitoBig())
+                        .frame(width: geometry.size.width)
+                        .foregroundStyle(LinearGradient(colors: [.white],
+                                                        startPoint: .leading, endPoint: .trailing))
+                        .lineLimit(3)
+                        .padding(.leading, 1)
 
 
-                    }
+                    Text(UniBookMiStrings.welcome)
+                        .font(UniBookMiFont.shared.nunitoBig())
+                        .frame(width: geometry.size.width)
+                        .lineLimit(3)
+
+
+                }
 
                 Map(position: $location)
                     .frame(width: geometry.size.width, height: 200)
                     .allowsHitTesting(false)
 
+
                 HStack {
                     UniBookMiButton(text: UniBookMiStrings.contacts, isEnabled: $allowButton) {
+                        navigationManager.push(NavigationViews.contacts)
 
                     }
 
                     UniBookMiButton(text: UniBookMiStrings.news, isEnabled: $allowButton) {
+                        navigationManager.push(NavigationViews.news)
 
                     }
                 }
-
 
 
                 // MARK: logout
@@ -120,9 +122,10 @@ struct HomePageView: View {
         guard let url = Bundle.main.url(forResource: "BookVideo", withExtension: "mp4") else { return }
         self.player = AVPlayer(url: url)
         self.player?.play()
+        let player = self.player //  capture the player property in a local variable before using it inside the closure.
         NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: nil, queue: .main) { _ in
-            self.player?.seek(to: .zero)
-            self.player?.play()
+            player?.seek(to: .zero)
+            player?.play()
         }
 
 

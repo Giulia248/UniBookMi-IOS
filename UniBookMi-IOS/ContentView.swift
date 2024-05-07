@@ -8,27 +8,39 @@
 import SwiftUI
 
 struct ContentView: View {
-    
+
     @StateObject var authService = AuthService()
-
+    @StateObject var navigationManager = NavigationManager()
     var body: some View {
-        VStack{
-            if authService.signedIn{
+        NavigationStack(path: $navigationManager.path) {
+            VStack{
+                if authService.signedIn{
 
-                TabView {
+                    TabView(selection: $navigationManager.root) {
 
-                    HomePageView(viewModel: HomePageViewModel(authService: authService))
-                        .tabItem {
-                                            Label("Menu", systemImage: "list.dash")
-                                        }
+                        HomePageView(viewModel: HomePageViewModel(authService: authService))
+                            .tabItem {
+                                Label(UniBookMiStrings.homePageTabBar, systemImage: "house.fill")
+                            }
+                            .environmentObject(navigationManager)
+                    }
+                    .navigationDestination(for: NavigationViews.self) { page in
+                        switch page {
+                        case .contacts:
+                            ContactsView(colorText: .green)
+                                .environmentObject(navigationManager)
+
+                        case .news:
+                            ContactsView(colorText: .blue)
+                        }
+
+                    }
+                } else {
+                    LoginView(viewModel: LoginViewModel(authService: authService))
                 }
-
-
-            } else {
-                LoginView(viewModel: LoginViewModel(authService: authService))
             }
+            .animation(.smooth, value: authService.signedIn)
         }
-        .animation(.smooth, value: authService.signedIn)
 
     }
 

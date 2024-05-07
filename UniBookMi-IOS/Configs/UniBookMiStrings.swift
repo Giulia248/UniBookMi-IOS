@@ -13,6 +13,7 @@ final class UniBookMiStrings {
     static let title = "UniBookMi"
     static let errore = "Errore"
     static let nome = "Nome"
+    static let indietro = "Indietro"
 
 
     // MARK: login \ register
@@ -25,6 +26,7 @@ final class UniBookMiStrings {
 
     // MARK: home page
 
+    static let homePageTabBar = "HomePage"
     static let benvenuto = "Benvenuto"
     static let logout = "Logout"
     static let homePage = "Home Page"
@@ -32,6 +34,9 @@ final class UniBookMiStrings {
     static let dashboard = "Dashboard"
     static let news = "News"
     static let reservation = "Prenotazioni Aule"
+
+    // MARK: - Contatti
+
     static let contacts = "Contatti"
 
 

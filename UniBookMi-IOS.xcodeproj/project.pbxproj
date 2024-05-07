@@ -56,6 +56,8 @@
 		16CCC7082BC5777C003C83DF /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CCC7072BC5777C003C83DF /* HomePageView.swift */; };
 		16CCC70B2BC57A96003C83DF /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CCC70A2BC57A96003C83DF /* AuthService.swift */; };
 		16CCC70D2BC582A1003C83DF /* UniBookMiDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CCC70C2BC582A1003C83DF /* UniBookMiDatabase.swift */; };
+		16EDBA502BEA163B00C45D75 /* ContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EDBA4F2BEA163B00C45D75 /* ContactsView.swift */; };
+		16F732CE2BE3C818004506CC /* BookVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 16F732CD2BE3C818004506CC /* BookVideo.mp4 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +85,8 @@
 		16CCC7072BC5777C003C83DF /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
 		16CCC70A2BC57A96003C83DF /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		16CCC70C2BC582A1003C83DF /* UniBookMiDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniBookMiDatabase.swift; sourceTree = "<group>"; };
+		16EDBA4F2BEA163B00C45D75 /* ContactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsView.swift; sourceTree = "<group>"; };
+		16F732CD2BE3C818004506CC /* BookVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = BookVideo.mp4; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +131,7 @@
 		1629B19A2BB45841007ADF0E /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				16EDBA4E2BEA161E00C45D75 /* Contacts */,
 				16CCC7062BC5775E003C83DF /* HomePage */,
 				16CCC7052BC57753003C83DF /* Login */,
 			);
@@ -153,6 +158,7 @@
 		164F39732BB58A2A007F1940 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				16F732CD2BE3C818004506CC /* BookVideo.mp4 */,
 				164F39832BB5DBA6007F1940 /* logo.png */,
 				164F39812BB5DA96007F1940 /* logo.ico */,
 				164F39762BB58DEE007F1940 /* UIComponents */,
@@ -248,6 +254,14 @@
 				16CCC70C2BC582A1003C83DF /* UniBookMiDatabase.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		16EDBA4E2BEA161E00C45D75 /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				16EDBA4F2BEA163B00C45D75 /* ContactsView.swift */,
+			);
+			path = Contacts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -346,6 +360,7 @@
 				164F39842BB5DBA6007F1940 /* logo.png in Resources */,
 				16A64F3F2BADD10B00B659C3 /* Assets.xcassets in Resources */,
 				164F39822BB5DA96007F1940 /* logo.ico in Resources */,
+				16F732CE2BE3C818004506CC /* BookVideo.mp4 in Resources */,
 				1629B1992BB45654007ADF0E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -359,6 +374,7 @@
 			files = (
 				16CCC70D2BC582A1003C83DF /* UniBookMiDatabase.swift in Sources */,
 				1629B1D32BB458EB007ADF0E /* LoginView.swift in Sources */,
+				16EDBA502BEA163B00C45D75 /* ContactsView.swift in Sources */,
 				16A64F3D2BADD10800B659C3 /* ContentView.swift in Sources */,
 				164F397A2BB5A8A5007F1940 /* UniBookMiFont.swift in Sources */,
 				16A64F3B2BADD10800B659C3 /* UniBookMi_IOSApp.swift in Sources */,
