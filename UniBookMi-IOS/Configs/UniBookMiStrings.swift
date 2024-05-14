@@ -46,6 +46,8 @@ final class UniBookMiStrings {
     static let writeYourMessage = "Scrivi il tuo messaggio"
     static let contactMethod = "Come vuoi essere ricontattato"
     static let send = "Invia"
+    static let emailError = "This device cannot send emails."
+    static let fieldsError = "Riempi tutti i campi"
 
 
 
